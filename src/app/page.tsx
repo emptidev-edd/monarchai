@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import ContactForm from "@/components/ContactForm";
 import {
   MessageSquare,
   ShieldAlert,
@@ -418,7 +417,7 @@ export default function Home() {
             <div className="md:sticky md:top-28">
               <div className="rounded-2xl overflow-hidden shadow-xl shadow-slate-900/10 border border-slate-100">
                 <Image
-                  src="/bella_photo.jpg"
+                  src="/bella-founder.jpeg"
                   alt="Bella, Founder of Monarch AI"
                   width={320}
                   height={420}
@@ -500,7 +499,12 @@ export default function Home() {
             launch. Reach out to learn how our platform fits your school, and
             get pricing tailored to your district.
           </p>
-          <ContactForm />
+          <a
+            href="mailto:support@monarchai.io"
+            className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-lg font-semibold text-[#0094C5] shadow-lg shadow-black/20 transition-all hover:bg-white/90 hover:scale-[1.02]"
+          >
+            support@monarchai.io
+          </a>
         </div>
       </section>
 
