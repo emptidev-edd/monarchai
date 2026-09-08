@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import {
   MessageSquare,
@@ -566,6 +567,11 @@ export default function Home() {
                     Pricing
                   </a>
                 </li>
+                <li>
+                  <Link href="/privacy-policy" className="hover:text-white transition-colors">
+                    Privacy Policy
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -573,6 +579,10 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
             <p>© {new Date().getFullYear()} Monarch AI. All rights reserved.</p>
             <p>
+              <Link href="/privacy-policy" className="text-white hover:underline">
+                Privacy Policy
+              </Link>
+              <span className="mx-3 text-slate-600">·</span>
               Contact us:{" "}
               <a href="mailto:support@monarchai.io" className="text-white hover:underline">
                 support@monarchai.io

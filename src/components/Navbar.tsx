@@ -1,10 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Navbar() {
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === "/";
+
+  const goToSection = (id: string) => {
+    if (isHome) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+    router.push(`/#${id}`);
   };
 
   return (
@@ -13,7 +23,7 @@ export default function Navbar() {
       style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <button onClick={() => scrollTo("hero")} className="flex items-center gap-2 group cursor-pointer">
+        <Link href="/" className="flex items-center gap-2 group cursor-pointer">
           <Image
             src="/monarch_logo.png"
             alt="Monarch AI Logo"
@@ -22,7 +32,7 @@ export default function Navbar() {
             className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             priority
           />
-        </button>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-8">
           {[
@@ -33,7 +43,7 @@ export default function Navbar() {
           ].map((item) => (
             <button
               key={item.id}
-              onClick={() => scrollTo(item.id)}
+              onClick={() => goToSection(item.id)}
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors cursor-pointer"
             >
               {item.label}
@@ -43,7 +53,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-4">
           <button
-            onClick={() => scrollTo("contact")}
+            onClick={() => goToSection("contact")}
             className="inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium bg-[#0094C5] text-white hover:bg-[#0094C5]/90 h-11 px-6 py-2 shadow-md shadow-[#0094C5]/20 transition-colors cursor-pointer"
           >
             Contact Us
